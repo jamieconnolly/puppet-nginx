@@ -1,0 +1,12 @@
+---
+nginx::package:    'boxen/brews/nginx'
+nginx::version:    '1.6.2-boxen1'
+
+nginx::configdir:  "%{::boxen::config::configdir}/nginx"
+nginx::datadir:    "%{::boxen::config::datadir}/nginx"
+nginx::logdir:     "%{::boxen::config::logdir}/nginx"
+nginx::sitesdir:   "%{hiera('nginx::configdir')}/sites"
+
+nginx::executable: "%{::boxen::config::homebrewdir}/bin/nginx"
+nginx::service:    'dev.nginx'
+nginx::user:       'root'

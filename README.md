@@ -1,6 +1,5 @@
 # nginx Puppet Module for Boxen
-[![Build
-Status](https://travis-ci.org/boxen/puppet-nginx.svg?branch=master)](https://travis-ci.org/boxen/puppet-nginx)
+[![Build Status](https://travis-ci.org/boxen/puppet-nginx.svg)](https://travis-ci.org/boxen/puppet-nginx)
 
 ## Usage
 
@@ -8,11 +7,15 @@ Status](https://travis-ci.org/boxen/puppet-nginx.svg?branch=master)](https://tra
 include nginx
 ```
 
+This module supports data bindings via hiera. See the parameters to the nginx
+class for overridable values.
+
 ## Required Puppet Modules
 
-* boxen
-* homebrew
-* stdlib
+* `boxen`
+* `homebrew`
+* `ripienaar/puppet-module-data`
+* `stdlib`
 
 ## Development
 

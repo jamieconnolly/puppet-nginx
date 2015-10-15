@@ -1,9 +1,5 @@
-def github(name, version, options = nil)
-  options ||= {}
-  options[:repo] ||= "boxen/puppet-#{name}"
-  mod name, version, :github_tarball => options[:repo]
-end
-
-github "boxen",    "1.1.1"
-github "homebrew", "1.1.0"
-github "stdlib",   "3.0.0", :repo => "puppetlabs/puppetlabs-stdlib"
+mod "boxen",       "3.6.0", :github_tarball => "boxen/puppet-boxen"
+mod "homebrew",    "1.6.0", :github_tarball => "boxen/puppet-homebrew"
+mod "module_data", "0.0.1", :github_tarball => "ripienaar/puppet-module-data"
+mod "repository",  "2.2.0", :github_tarball => "boxen/puppet-repository"
+mod "stdlib",      "4.1.0", :github_tarball => "puppetlabs/puppetlabs-stdlib"
