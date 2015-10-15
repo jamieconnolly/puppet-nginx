@@ -4,9 +4,10 @@ class Nginx < Formula
   homepage 'http://nginx.org/'
   url 'http://nginx.org/download/nginx-1.6.2.tar.gz'
   sha1 '1a5458bc15acf90eea16353a1dd17285cf97ec35'
-  version '1.6.2-boxen1'
+  version '1.6.2-boxen2'
 
   depends_on 'pcre'
+  depends_on "openssl" => :recommended
 
   skip_clean 'logs'
 
@@ -32,12 +33,17 @@ class Nginx < Formula
   end
 
   def install
+    pcre = Formula["pcre"]
+    openssl = Formula["openssl"]
+    cc_opt = "-I#{pcre.include} -I#{openssl.include} -I#{HOMEBREW_PREFIX}/include"
+    ld_opt = "-L#{pcre.lib} -L#{openssl.lib} -L#{HOMEBREW_PREFIX}/lib"
+
     args = ["--prefix=#{prefix}",
             "--with-http_ssl_module",
             "--with-pcre",
             "--with-ipv6",
-            "--with-cc-opt='-I#{HOMEBREW_PREFIX}/include'",
-            "--with-ld-opt='-L#{HOMEBREW_PREFIX}/lib'",
+            "--with-cc-opt=#{cc_opt}",
+            "--with-ld-opt=#{ld_opt}",
             "--conf-path=/opt/boxen/config/nginx/nginx.conf",
             "--pid-path=/opt/boxen/data/nginx/nginx.pid",
             "--lock-path=/opt/boxen/data/nginx/nginx.lock"]
